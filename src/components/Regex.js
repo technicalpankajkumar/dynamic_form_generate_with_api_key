@@ -1,0 +1,1 @@
+export const image_Regex = /[^\s]+(.*?).(jpg|jpeg|png|gif|webp|bmp)$/i
