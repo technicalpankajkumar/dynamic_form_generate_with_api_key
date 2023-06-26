@@ -1,26 +1,20 @@
-import { useState } from "react"
-import { preprocessCSS } from "vite"
-export default function GenerateFrom({ item }) {
-    const [fieldData,setFieldData]=useState(item)
 
-    console.log(fieldData)
+export default function GenerateFrom({ data,handleFunction, legend=''}) {
+
     return (
         <div>
             {
-                Object.keys(item).map(value => {
-
-                    return (typeof item[value] == 'object'
+                Object.keys(data).map(element=> {
+                    return (typeof data[element] == 'object'
                         ?
                         <fieldset style={{border:'1px solid gray', marginBottom:'20px'}} className="form-control">
-                            <legend>{value}</legend>
-                            <GenerateFrom item={item[value]} />
-                            
+                            <legend>{element}</legend>
+                            <GenerateFrom data={data[element]} handleFunction={handleFunction} legend={element}/>
                         </fieldset>
                         :
                         <div className="p-2">
-                            <label htmlFor={value}> {value} </label>
-                            <input type="text" name={value} id={value} value={item[value]} onChange={(e)=>e.target.value} className="form-control"/>
-                            
+                            <label htmlFor={element}> {element} </label>
+                            <input type="text" name={element} id={element} value={data[element]} onChange={(e)=>{handleFunction(e,legend)}} className="form-control"/>    
                         </div>
                     )
                 })

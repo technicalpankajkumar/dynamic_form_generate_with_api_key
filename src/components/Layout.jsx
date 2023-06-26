@@ -25,7 +25,7 @@ function Layout() {
 
    //edit function
    const editData = (id) => {
-      navigate(`/form/${id}?edit="me"`)
+      navigate(`/form/${id}`)
    }
 
    //side effect 
