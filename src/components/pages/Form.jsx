@@ -20,7 +20,7 @@ export default function Form() {
         console.log(solveProblem)
 
         if (solveProblem.length == 1 || solveProblem.length == 0) {
-          
+
             Object.keys(data).map(element => {
                 if (element == e.target.name || element == solveProblem[0]) {
                     if (typeof data[element] == 'object' || typeof data[solveProblem[0]] == 'object') {
@@ -39,39 +39,63 @@ export default function Form() {
             })
         }
         else if (solveProblem.length == 2) {
-         let data1=solveProblem[0]
-         let data2=solveProblem[1]      
-         setData((pre)=>({
+            let data1 = solveProblem[0]
+            let data2 = solveProblem[1]
+            setData((pre) => ({
                 ...pre,
-                [data1]:{
-                     ...pre?.[data1],
-                     [data2]:{
+                [data1]: {
+                    ...pre?.[data1],
+                    [data2]: {
                         ...pre?.[data1]?.[data2],
-                        [e.target.name]:e.target.value
-                     }
+                        [e.target.name]: e.target.value
+                    }
                 }
-                })
+            })
             )
-        }  else if (solveProblem.length == 3) {
-            let data1=solveProblem[0]
-            let data2=solveProblem[1]
-            let data3=solveProblem[2]
-               setData((pre)=>({
-                   ...pre,
-                   [data1]:{
-                        ...pre?.[data1],
-                        [data2]:{
-                           ...pre?.[data1]?.[data2],
-                           [data3]:{
+        } else if (solveProblem.length == 3) {
+            let data1 = solveProblem[0]
+            let data2 = solveProblem[1]
+            let data3 = solveProblem[2]
+            setData((pre) => ({
+                ...pre,
+                [data1]: {
+                    ...pre?.[data1],
+                    [data2]: {
+                        ...pre?.[data1]?.[data2],
+                        [data3]: {
                             ...pre?.[data1]?.[data2]?.[data3],
-                                [e.target.name]:e.target.value
-                            
-                           }
+                            [e.target.name]: e.target.value
+
                         }
-                   }
-                   })
-               )
-           }
+                    }
+                }
+            })
+            )
+        }
+        else if (solveProblem.length == 4) {
+            let data1 = solveProblem[0]
+            let data2 = solveProblem[1]
+            let data3 = solveProblem[2]
+            let data4 = solveProblem[3]
+            setData((pre) => ({
+                ...pre,
+                [data1]: {
+                    ...pre?.[data1],
+                    [data2]: {
+                        ...pre?.[data1]?.[data2],
+                        [data3]: {
+                            ...pre?.[data1]?.[data2]?.[data3],
+                            [data4]: {
+                                ...pre?.[data1]?.[data2]?.[data3]?.[data4],
+                                [e.target.name]: e.target.value
+                            }
+
+                        }
+                    }
+                }
+            })
+            )
+        }
 
     }
 
