@@ -14,16 +14,23 @@ export default function Form() {
 
     //onchange handle function
     const handleFunction = (e, legend) => {
-        console.log(legend)
-        const recursiveFn = (data, legend) => {
+
+        let solveProblem = legend.split(".").reverse().filter(ele => ele !== '')
+
+        console.log(solveProblem)
+
+        if (solveProblem.length == 1 || solveProblem.length == 0) {
+          
             Object.keys(data).map(element => {
-                if (element == e.target.name || element == legend) {
-                    if (typeof data[element] == 'object' || typeof data[legend] == 'object') {
-                        if (legend && e.target.name) {
+                if (element == e.target.name || element == solveProblem[0]) {
+                    if (typeof data[element] == 'object' || typeof data[solveProblem[0]] == 'object') {
+
+                        if (data[solveProblem[0]] && e.target.name) {
                             setData({
-                                ...data, [legend]: { ...data?.[legend], [e.target.name]: e.target.value }
+                                ...data, [solveProblem[0]]: { ...data?.[solveProblem[0]], [e.target.name]: e.target.value }
                             })
-                        }   
+                        }
+
                     }
                     else {
                         setData({ ...data, [e.target.name]: e.target.value })
@@ -31,15 +38,50 @@ export default function Form() {
                 }
             })
         }
-        recursiveFn(data,legend)
+        else if (solveProblem.length == 2) {
+         let data1=solveProblem[0]
+         let data2=solveProblem[1]      
+         setData((pre)=>({
+                ...pre,
+                [data1]:{
+                     ...pre?.[data1],
+                     [data2]:{
+                        ...pre?.[data1]?.[data2],
+                        [e.target.name]:e.target.value
+                     }
+                }
+                })
+            )
+        }  else if (solveProblem.length == 3) {
+            let data1=solveProblem[0]
+            let data2=solveProblem[1]
+            let data3=solveProblem[2]
+               setData((pre)=>({
+                   ...pre,
+                   [data1]:{
+                        ...pre?.[data1],
+                        [data2]:{
+                           ...pre?.[data1]?.[data2],
+                           [data3]:{
+                            ...pre?.[data1]?.[data2]?.[data3],
+                                [e.target.name]:e.target.value
+                            
+                           }
+                        }
+                   }
+                   })
+               )
+           }
+
     }
 
     //handle submit
-    const handleSubmit=(e)=>{
+    const handleSubmit = (e) => {
         e.preventDefault()
         console.log(data)
         UpdateAPI(param.id, data)
     }
+
 
     return (
         <div className="row justify-content-center">
