@@ -1,5 +1,4 @@
 export default function ProTableHeader({ item, className }) {
-
     return (
         <thead>
             {

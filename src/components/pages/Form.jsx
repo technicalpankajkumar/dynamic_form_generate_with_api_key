@@ -17,10 +17,7 @@ export default function Form() {
 
         let solveProblem = legend.split(".").reverse().filter(ele => ele !== '')
 
-        console.log(solveProblem)
-
         if (solveProblem.length == 1 || solveProblem.length == 0) {
-
             Object.keys(data).map(element => {
                 if (element == e.target.name || element == solveProblem[0]) {
                     if (typeof data[element] == 'object' || typeof data[solveProblem[0]] == 'object') {
@@ -30,7 +27,6 @@ export default function Form() {
                                 ...data, [solveProblem[0]]: { ...data?.[solveProblem[0]], [e.target.name]: e.target.value }
                             })
                         }
-
                     }
                     else {
                         setData({ ...data, [e.target.name]: e.target.value })
@@ -89,20 +85,18 @@ export default function Form() {
                                 ...pre?.[data1]?.[data2]?.[data3]?.[data4],
                                 [e.target.name]: e.target.value
                             }
-
                         }
                     }
                 }
             })
             )
         }
-
     }
 
     //handle submit
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(data)
+        console.log("submited Data : ",data)
         UpdateAPI(param.id, data)
     }
 

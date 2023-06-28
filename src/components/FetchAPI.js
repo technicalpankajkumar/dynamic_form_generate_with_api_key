@@ -1,6 +1,5 @@
 
 export function GetAPI(setVariable,id=''){
-    // ${endPoint ? endPoint : ''}`
 
     fetch(`${import.meta.env.VITE_BASE_URL}/${id ? id : ''}`).then(resp => {
         resp.json().then(res => {

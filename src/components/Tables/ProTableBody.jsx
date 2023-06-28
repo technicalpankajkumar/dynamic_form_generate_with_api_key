@@ -20,7 +20,6 @@ export default function ProTableBody({item,className=""}){
                             </td>
                             :
                             <td>{item[nestedKey]}</td>
-
                     })
                 }
             </tr>

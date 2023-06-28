@@ -1,7 +1,7 @@
 import React, { useEffect, useState, memo } from 'react'
 import { GetAPI, DeleteAPI } from './FetchAPI'
 import ConditionalMainTable from './Tables/ConditionalMainTable'
-import { useLocation, useNavigate} from 'react-router-dom'
+import { useNavigate} from 'react-router-dom'
 
 
 function Layout() {
@@ -11,7 +11,7 @@ function Layout() {
                                                                    
    //delete function
    const deleteData = (id) => {
-      console.log("delete console")
+      // console.log("delete console")
       let agree = window.confirm("Are your sure delete data ?.")
 
       if (agree) {
@@ -31,7 +31,7 @@ function Layout() {
    //side effect 
    useEffect(() => {
       GetAPI(setApiData)
-      console.log("useEffect")
+      // console.log("useEffect")
    }, [render])
 
 
