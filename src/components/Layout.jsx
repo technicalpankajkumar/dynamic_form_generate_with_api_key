@@ -34,6 +34,7 @@ function Layout() {
       // console.log("useEffect")
    }, [render])
 
+   console.log(apiData)
 
    return (
       <div>

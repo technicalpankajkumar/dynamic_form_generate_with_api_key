@@ -14,7 +14,6 @@ export default function Form() {
 
     //onchange handle function
     const handleFunction = (e, legend) => {
-
         let solveProblem = legend.split(".").reverse().filter(ele => ele !== '')
 
         if (solveProblem.length == 1 || solveProblem.length == 0) {
@@ -96,8 +95,10 @@ export default function Form() {
     //handle submit
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log("submited Data : ",data)
+        console.log("submited Data : ", data)
+
         UpdateAPI(param.id, data)
+        alert("Your form is submitted!!!")
     }
 
 

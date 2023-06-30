@@ -6,7 +6,16 @@ import Button from '../Button'
 
 function ConditionalMainTable({ apiData, deleteData, editData }) {
 
-    let allKeys = apiData.length != 0 && Object.keys(apiData[Object.keys(apiData)[0]][0])
+    let allKeys=''
+    if(Array.isArray(apiData) && apiData.length != 0){
+        allKeys = Object.keys(apiData[0])
+    }else {
+        allKeys = apiData.length != 0 && Object.keys(apiData[Object.keys(apiData)[0]][0])
+    }
+
+
+    console.log(apiData)
+    console.log(allKeys)
 
     return (
         <table border="1px" className='table table-hover table-bordered'>
