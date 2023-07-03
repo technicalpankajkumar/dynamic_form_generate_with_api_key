@@ -1,5 +1,16 @@
 
-export function GetAPI(setVariable,id=''){
+export function GetAPI(setVariable){
+
+    fetch(`${import.meta.env.VITE_BASE_URL}`).then(resp => {
+        resp.json().then(res => {
+            Array.isArray(res) ? setVariable(res) : setVariable(res[Object.keys(res)[0]])
+        })
+    }).catch(err=> {
+        throw new Error(err)
+    })
+}
+
+export function GetAPI_ID(setVariable,id=''){
 
     fetch(`${import.meta.env.VITE_BASE_URL}/${id ? id : ''}`).then(resp => {
         resp.json().then(res => {

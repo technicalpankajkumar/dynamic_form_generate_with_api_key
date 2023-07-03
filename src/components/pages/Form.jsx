@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { GetAPI, UpdateAPI } from "../FetchAPI";
+import { GetAPI_ID, UpdateAPI } from "../FetchAPI";
 import GenerateFrom from "./GenerateForm";
 import Button from "../Button";
 
@@ -9,7 +9,7 @@ export default function Form() {
     const param = useParams()
 
     useEffect(() => {
-        GetAPI(setData, param.id)
+       GetAPI_ID(setData, param.id)
     }, [])
 
     //onchange handle function
